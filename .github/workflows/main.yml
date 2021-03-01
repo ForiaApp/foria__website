@@ -30,15 +30,15 @@ jobs:
       - name: Build
         run: yarn docs:build
 
-      - name: Publish on Netlify (preview)
+      - name: Publish on Netlify (staging)
         run: yarn docs:publish:staging ${{ github.sha }} ${{ github.actor }} ${{ github.ref }}
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
 
   publish-netlify:
-    name: Deploy to production
-    if: github.ref == 'refs/heads/master'
+    name: Deploy to prod
+    if: github.ref != 'refs/heads/master'
     runs-on: ubuntu-16.04
     steps:
       - name: Checkout
@@ -58,7 +58,7 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Publish on Netlify (production)
+      - name: Publish on Netlify (prod)
         run: yarn docs:publish:prod ${{ github.sha }} ${{ github.actor }} ${{ github.ref }} --prod
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
