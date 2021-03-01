@@ -31,7 +31,7 @@ jobs:
         run: yarn docs:build
 
       - name: Publish on Netlify (preview)
-        run: yarn docs:publish ${{ github.sha }} ${{ github.actor }} ${{ github.ref }}
+        run: yarn docs:publish:staging ${{ github.sha }} ${{ github.actor }} ${{ github.ref }}
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
@@ -59,7 +59,7 @@ jobs:
         run: yarn install
 
       - name: Publish on Netlify (production)
-        run: yarn docs:publish ${{ github.sha }} ${{ github.actor }} ${{ github.ref }} --prod
+        run: yarn docs:publish:prod ${{ github.sha }} ${{ github.actor }} ${{ github.ref }} --prod
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
