@@ -2,7 +2,7 @@
   "devDependencies": {
     "eslint": "^7.22.0",
     "eslint-config-dipasqualew": "^1.1.1",
-    "netlify-cli": "^3.10.12",
+    "netlify-cli": "^6.7.1",
     "vuepress": "^1.8.2"
   },
   "scripts": {
